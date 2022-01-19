@@ -40,6 +40,7 @@ function Cart() {
   };
 
   const onClickOrder = () => {
+    alert("Смачного!");
     console.log("ВАШЕ ЗАМОВЛЕННЯ", items);
   };
 
