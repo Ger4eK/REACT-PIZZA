@@ -95,7 +95,7 @@ function PizzaBlock({
               fill="white"
             />
           </svg>
-          <span>Добавити</span>
+          <span>Додати</span>
           {addedCount && <i>{addedCount}</i>}
         </Button>
       </div>
