@@ -6,26 +6,27 @@ const initialState = {
 
 const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
 
-const _get = (obj, path) => {
-  const [firstKey, ...keys] = path.split(".");
-  return keys.reduce((val, key) => {
-    return val[key];
-  }, obj[firstKey]);
-};
-const getTotalSum = (obj, path) => {
-  return Object.values(obj).reduce((sum, obj) => {
-    const value = _get(obj, path);
-    return sum + value;
-  }, 0);
-};
+//const _get = (obj, path) => {
+//  const [firstKey, ...keys] = path.split(".");
+//  return keys.reduce((val, key) => {
+//    return val[key];
+//  }, obj[firstKey]);
+//};
+//const getTotalSum = (obj, path) => {
+//  return Object.values(obj).reduce((sum, obj) => {
+//    const value = _get(obj, path);
+//    return sum + value;
+//  }, 0);
+//};
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_PIZZA_CART": {
+      //! з допомогою цього currentPizzaItems ми знаєм звідки брати актуальні данні, бо так воно буде завжди посилатись на initialState
       const currentPizzaItems = !state.items[action.payload.id]
         ? [action.payload]
         : [...state.items[action.payload.id].items, action.payload];
-      //! з допомогою цього newItems ми знаєм звідки брати актуальні данні
+
       const newItems = {
         ...state.items,
         [action.payload.id]: {
@@ -36,13 +37,20 @@ const cart = (state = initialState, action) => {
 
       //! є Object, берем всі його ключі keys(), потім беру кожен ключ і з newItems витягую з нього по ключу([key]) items і його length
 
-      const totalCount = getTotalSum(newItems, "items.length");
-      const totalPrice = getTotalSum(newItems, "totalPrice");
+      //todo простий спосіб
+      const items = Object.values(newItems).map((obj) => obj.items);
+      const allPizzas = [].concat.apply([], items);
+
+      const totalPrice = getTotalPrice(allPizzas);
+
+      //todo складнйи спосіб
+      //const totalCount = getTotalSum(newItems, "items.length");
+      //const totalPrice = getTotalSum(newItems, "totalPrice");
 
       return {
         ...state,
         items: newItems,
-        totalCount,
+        totalCount: allPizzas.length,
         totalPrice,
       };
     }
@@ -86,12 +94,19 @@ const cart = (state = initialState, action) => {
         },
       };
 
-      const totalCount = getTotalSum(newItems, "items.length");
-      const totalPrice = getTotalSum(newItems, "totalPrice");
+      //todo простий спосіб
+      const items = Object.values(newItems).map((obj) => obj.items);
+      const allPizzas = [].concat.apply([], items);
+      const totalPrice = getTotalPrice(allPizzas);
+
+      //todo складний спосіб
+      //const totalCount = getTotalSum(newItems, "items.length");
+      //const totalPrice = getTotalSum(newItems, "totalPrice");
+
       return {
         ...state,
         items: newItems,
-        totalCount,
+        totalCount: allPizzas.length,
         totalPrice,
       };
     }
@@ -110,13 +125,20 @@ const cart = (state = initialState, action) => {
           totalPrice: getTotalPrice(newObjItems),
         },
       };
-      const totalCount = getTotalSum(newItems, "items.length");
-      const totalPrice = getTotalSum(newItems, "totalPrice");
+
+      //todo простий спосіб
+      const items = Object.values(newItems).map((obj) => obj.items);
+      const allPizzas = [].concat.apply([], items);
+      const totalPrice = getTotalPrice(allPizzas);
+
+      //todo складний спосіб
+      //const totalCount = getTotalSum(newItems, "items.length");
+      //const totalPrice = getTotalSum(newItems, "totalPrice");
 
       return {
         ...state,
         items: newItems,
-        totalCount,
+        totalCount: allPizzas.length,
         totalPrice,
       };
     }
@@ -134,3 +156,5 @@ export default cart;
 //! Якщо нічого немає  !state.items[action.payload.id]
 //! то створи масив  ? [action.payload]
 //! якщо є то будем робити все як написано вище  : [...state.items[action.payload.id], action.payload]
+
+//! [action.payload.id] ми огортаєм в дужки бо ми передаєм динамічне значення (id)
