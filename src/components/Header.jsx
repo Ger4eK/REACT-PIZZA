@@ -5,7 +5,6 @@ import logoSvg from "./../assets/img/pizza-logo.svg";
 import Button from "./Button";
 
 function Header() {
-  //! ми говоримо useSelector дай нам з redux редюсор cart, витягни з нього totalPrice і totalCount на результат нам верни у вингляді об'єкта з двама значеннями
   const { totalPrice, totalCount } = useSelector(({ cart }) => ({
     totalPrice: cart.totalPrice,
     totalCount: cart.totalCount,

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 //! за допомогою memo наша компонента не робить непотрібний ререндер коли пропси не змінились. Це потрібно для того коли у вас є якісь динамічні дані і їх може бути тисячі і це буде впливати на слабкі машини і для того щоб таке оптимізувати ми використовуємо memo
 const Categories = React.memo(({ activeCategory, items, onClickCategory }) => {
-  //todo для тесту чи рендериться зайвий раз компонента (перевіряєм через window.test в app.js)
 
   return (
     <div className="categories">
@@ -14,7 +13,7 @@ const Categories = React.memo(({ activeCategory, items, onClickCategory }) => {
         >
           Всі
         </li>
-        {items && //! говорить якшо items є то робить map, якшо нема items (тобто undefined) то нічого не показує
+        {items && 
           items.map((name, index) => (
             <li
               className={activeCategory === index ? "active" : ""}
@@ -30,7 +29,6 @@ const Categories = React.memo(({ activeCategory, items, onClickCategory }) => {
 });
 
 Categories.propTypes = {
-  //activeCategory: PropTypes.oneOf([PropTypes.number, null]),
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClickCategory: PropTypes.func.isRequired,
 };

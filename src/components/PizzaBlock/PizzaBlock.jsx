@@ -75,13 +75,11 @@ function PizzaBlock({
             </li>
           ))}
         </ul>
-        {/*//! ми говоримо якщо в нас в sizes нема якогось одного індекса то ставимо клас desabled*/}
+        {/*//! ми говоримо якщо в нас в sizes нема якогось одного індекса то ставимо клас disabled*/}
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} грн</div>
-        {/*//! className="button--add" - властивість яка отримує значення
-        //! outline - не отрмує ніяке значення 
-        //! бажано властивості які нічого не отримують записувати зправа */}
+        
         <Button onClick={onAddPizza} className="button--add" outline>
           <svg
             width="12"

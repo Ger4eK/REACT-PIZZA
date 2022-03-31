@@ -40,7 +40,6 @@ const cart = (state = initialState, action) => {
       //todo простий спосіб
       const items = Object.values(newItems).map((obj) => obj.items);
       const allPizzas = [].concat.apply([], items);
-
       const totalPrice = getTotalPrice(allPizzas);
 
       //todo складнйи спосіб

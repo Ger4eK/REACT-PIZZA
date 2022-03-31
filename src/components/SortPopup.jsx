@@ -12,8 +12,7 @@ const SortPopup = React.memo(function SortPopup({
   //! find шукає назву items по type (в нас там є ше по name тому ми і робим так шоб шукалось тіки по type) і шоб popup працював ми додаєм .name
   const activeLabel = items.find((obj) => obj.type === activeSortType).name;
 
-  //! З допомогою setVisiblePopup(!visiblePopup) воно ставить на кожен клін протилежне (клік появилось - клік зникло)
-  const toggleVisiblePopup = () => {
+  const toggleVisiblePopup  = () => {
     setVisiblePopup(!visiblePopup);
   };
 

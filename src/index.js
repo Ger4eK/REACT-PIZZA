@@ -11,8 +11,7 @@ import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    {/*//! provider дозволєя нам пркидувати store будь якому компоненту в app*/}
+    <BrowserRouter>  
       <Provider store={store}>
         <App />
       </Provider>

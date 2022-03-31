@@ -6,7 +6,6 @@ export const setLoaded = (payload) => ({
   payload,
 });
 
-//! коли є деякий спеціальний метод яким буде звертатись до сервера ми пишемо fetch (шось), в нас fetchPizza
 //! thunk в нас є асинхронний action (тобто функція повертає другу функцію)
 export const fetchPizzas = (sortBy, category) => (dispatch) => {
   //! перед запитом піц ми завжди ставимо setLoaded(false)
