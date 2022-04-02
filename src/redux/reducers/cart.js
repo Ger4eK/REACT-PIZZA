@@ -21,7 +21,7 @@ const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_PIZZA_CART": {
+    case 'ADD_PIZZA_CART': {
       //! з допомогою цього currentPizzaItems ми знаєм звідки брати актуальні данні, бо так воно буде завжди посилатись на initialState
       const currentPizzaItems = !state.items[action.payload.id]
         ? [action.payload]
@@ -53,7 +53,7 @@ const cart = (state = initialState, action) => {
         totalPrice,
       };
     }
-    case "CLEAR_CART": {
+    case 'CLEAR_CART': {
       return {
         ...state,
         items: {},
@@ -61,7 +61,7 @@ const cart = (state = initialState, action) => {
         totalCount: 0,
       };
     }
-    case "REMOVE_CART_ITEM": {
+    case 'REMOVE_CART_ITEM': {
       //! цим ми клонуєм state.items
       const newItems = {
         ...state.items,
@@ -80,7 +80,7 @@ const cart = (state = initialState, action) => {
         totalCount: state.totalCount - currentTotalCount,
       };
     }
-    case "PLUS_CART_ITEM": {
+    case 'PLUS_CART_ITEM': {
       const newObjItems = [
         ...state.items[action.payload].items,
         state.items[action.payload].items[0],
@@ -110,7 +110,7 @@ const cart = (state = initialState, action) => {
       };
     }
 
-    case "MINUS_CART_ITEM": {
+    case 'MINUS_CART_ITEM': {
       const oldItems = state.items[action.payload].items;
       const newObjItems =
         oldItems.length > 1
