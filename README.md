@@ -5,10 +5,10 @@ https://react-pizza-first-project.herokuapp.com
 
 ## Stack:
 
-ReactJS + hooks
-React Router
-Redux Toolkit
-json-server
-Axios
-classnames
+ReactJS + hooks  
+React Router  
+Redux Toolkit  
+json-server  
+Axios  
+classnames  
 
