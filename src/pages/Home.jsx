@@ -71,7 +71,7 @@ function Home() {
               .fill(0)
               .map((_, index) => <PizzaLoader key={index} />)}
         {/*//! 1) Array створює 12 елементів в масиві 
-        //! 2) і зразу візьми кожен елемент(undefined) перетвори(fill) його в <PizzaLoader />*/}
+        //! 2) І кожен елемент(undefined) перетворює(fill) його в <PizzaLoader />*/}
       </div>
     </div>
   );
